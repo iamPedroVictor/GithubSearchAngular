@@ -4,6 +4,7 @@ export class Repository {
     public ownerAvatar: string;
     public repositoryLink: string;
     public language: string;
+    public description: string;
 
     constructor(data: any){
         this.name = data.name;
@@ -11,5 +12,6 @@ export class Repository {
         this.ownerAvatar = data.owner.avatar_url;
         this.repositoryLink = data.html_url;
         this.language = data.language;
+        this.description = data.description;
     }
 }
