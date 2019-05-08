@@ -9,13 +9,18 @@ import { Repository } from '../repository';
 })
 export class RepositoryComponent implements OnInit {
 
-  repository: Repository;
+  repositories: Repository[] = [];
+  show: boolean = false;
   constructor(private githubService: GithubService) { }
 
   ngOnInit() {
     GithubService.searchedRepositories.subscribe(
       repositories => {
-        this.repository = new Repository(repositories[0]);
+        repositories.map( repository => {
+          this.repositories.push(new Repository(repository));
+        });
+        this.show = true;
+        console.log(this.repositories[0].language);
       }
     );
   }

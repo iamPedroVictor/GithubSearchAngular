@@ -1,7 +1,17 @@
 <div>
-  <h3>{{repository.name}}</h3>
-  <p>{{repository.ownerName}}</p>
-  <p>{{repository.ownerAvatar}}</p>
-  <p>{{repository.repositoryLink}}</p>
-  <p>{{repository.languange}}</p>
+  <h2 *ngIf="show">{{repositories[0].ownerName}}</h2>
+  <img *ngIf="show" [src]="repositories[0].ownerAvatar">
+</div>
+<div id="Repositories" class="center">
+    <p-card [style]="{width: '360px'}" styleClass="ui-card-shadow" class="card" *ngFor="let repository of repositories;">
+      <p-header class="card-header">
+        <h3>{{repository.name}}</h3>
+      </p-header>
+      <div class="card-body">
+        <p>{{repository.repositoryLink}}</p>
+        <p>{{repository.language}}</p>
+      </div>
+      <p-footer>
+      </p-footer>
+    </p-card>
 </div>
