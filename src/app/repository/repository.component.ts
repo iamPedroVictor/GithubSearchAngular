@@ -16,13 +16,16 @@ export class RepositoryComponent implements OnInit {
   ngOnInit() {
     GithubService.searchedRepositories.subscribe(
       repositories => {
+        this.repositories = [];
         repositories.map( repository => {
           this.repositories.push(new Repository(repository));
         });
         this.show = true;
-        console.log(this.repositories[0].language);
+        console.log(this.repositories[0]);
       }
     );
   }
+
+
 
 }
