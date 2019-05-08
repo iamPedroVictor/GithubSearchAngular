@@ -9,16 +9,11 @@ import { GithubService } from '../github.service';
 export class SearchBarComponent implements OnInit {
   public Username: string;
   constructor(private githubService: GithubService) { }
-  public repositories: any[] = [];
   ngOnInit() {
   }
 
   public search(){
-    this.githubService.getRepositories(this.Username).subscribe(
-      response => {
-        this.repositories = response;
-      }
-    );
+    this.githubService.getRepositories(this.Username);
   }
 
 }

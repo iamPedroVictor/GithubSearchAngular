@@ -7,13 +7,14 @@ import { Observable } from 'rxjs';
 })
 export class GithubService {
   url = `https://api.github.com/users/{0}/repos`;
-
+  static searchedRepositories = new EventEmitter<any[]>();
   constructor(private http: HttpClient) { }
 
-  public getRepositories(username: string): Observable<any[]> {
-    const url = `https://api.github.com/users/${username}/repos`;
-    console.log(url);
-    return this.http.get<any[]>(`https://api.github.com/users/${username}/repos`);
+  public getRepositories(username: string) {
+    let repositories = this.http.get<any[]>(`https://api.github.com/users/${username}/repos`);
+    repositories.subscribe(
+      response => GithubService.searchedRepositories.emit(response)
+    );
   }
 
 }
