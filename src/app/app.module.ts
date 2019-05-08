@@ -14,8 +14,8 @@ import {CardModule} from 'primeng/card';
 @NgModule({
   declarations: [
     AppComponent,
-    SearchBarComponent,
-    RepositoryComponent
+    RepositoryComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
