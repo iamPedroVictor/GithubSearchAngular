@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GithubService } from '../github.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,14 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
   public Username: string;
-  constructor() { }
-
+  constructor(private githubService: GithubService) { }
+  public repositories: any[] = [];
   ngOnInit() {
   }
 
   public search(){
-    alert('Foi chamado o metodo search');
-    console.log(this.Username);
+    this.githubService.getRepositories(this.Username).subscribe(
+      response => {
+        this.repositories = response;
+      }
+    );
   }
 
 }
